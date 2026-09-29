@@ -186,11 +186,43 @@ function Home() {
 
   return (
     <div className="app">
-      <h1>Cinema Manager</h1>
 
-      {/* Search */}
-      <div className="movie-form">
+      {/* ================= HERO ================= */}
+
+      <section className="hero">
+        <div className="hero-content">
+
+          <div className="hero-line"></div>
+
+          <h1>Cinema Manager</h1>
+
+          <p>
+            Discover movies. Explore stories. Enjoy cinema.
+          </p>
+
+          <button
+            className="hero-button"
+            onClick={() => {
+              document
+                .getElementById("movies-section")
+                ?.scrollIntoView({ behavior: "smooth" });
+            }}
+          >
+            Explore Movies
+          </button>
+
+        </div>
+      </section>
+
+
+      {/* ================= MOVIES SECTION ================= */}
+
+      <div className="movie-form" id="movies-section">
+
+        {/* Search */}
+
         <div className="search-box">
+
           <input
             type="text"
             placeholder="Search for a movie..."
@@ -210,9 +242,12 @@ function Home() {
           <button onClick={handleClear} disabled={loading}>
             Clear
           </button>
+
         </div>
 
+
         {/* Add / Edit Form */}
+
         <h2>
           {editMovieId === null ? "Add Movie" : "Edit Movie"}
         </h2>
@@ -250,37 +285,49 @@ function Home() {
           {editMovieId === null ? "Add Movie" : "Save Changes"}
         </button>
 
+
         {/* Error */}
+
         {error && (
           <div className="error-message">
             <p>{error}</p>
           </div>
         )}
 
+
         {/* Loading */}
+
         {loading && (
           <p className="loading">
             Loading movies...
           </p>
         )}
 
+
         {/* No Results */}
+
         {!loading && !error && movies.length === 0 && (
           <p className="no-results">
             No movies found.
           </p>
         )}
 
+
         {/* Movies */}
+
         {!loading && !error && movies.length > 0 && (
           <div className="movies-container">
+
             {movies.map((movie) => (
+
               <div
                 className="movie-card"
                 key={movie.id}
                 onClick={() => handleMovieClick(movie)}
               >
+
                 {/* Poster */}
+
                 {movie.poster_path ? (
                   <img
                     src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
@@ -292,37 +339,51 @@ function Home() {
                   </div>
                 )}
 
+
                 {/* Movie title */}
+
                 <h3>{movie.title}</h3>
 
+
                 {/* Release date */}
+
                 {movie.release_date && (
                   <p>{movie.release_date}</p>
                 )}
 
+
                 {/* Runtime */}
+
                 {movie.runtime && (
                   <p>{movie.runtime} min</p>
                 )}
 
+
                 {/* Category */}
+
                 {movie.category && (
                   <p>{movie.category}</p>
                 )}
 
+
                 {/* Manual movie duration */}
+
                 {movie.duration && (
                   <p>{movie.duration} min</p>
                 )}
 
+
                 {/* Overview */}
+
                 {movie.overview && (
                   <p className="overview">
                     {movie.overview}
                   </p>
                 )}
 
+
                 {/* Edit */}
+
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -336,7 +397,9 @@ function Home() {
                   Edit
                 </button>
 
+
                 {/* Delete */}
+
                 <button
                   onClick={(e) => {
                     e.stopPropagation();
@@ -346,11 +409,16 @@ function Home() {
                 >
                   Delete
                 </button>
+
               </div>
+
             ))}
+
           </div>
         )}
+
       </div>
+
     </div>
   );
 }
