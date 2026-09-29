@@ -1,4 +1,88 @@
 /* ========================================
+   GLOBAL
+======================================== */
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+
+  background: #171717;
+
+  color: white;
+
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* ========================================
+   APP
+======================================== */
+
+.app {
+  min-height: 100vh;
+
+  background: #171717;
+
+  color: white;
+}
+
+
+/* ========================================
+   NAVBAR
+======================================== */
+
+.navbar {
+  height: 85px;
+
+  padding: 0 50px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  background: #111111;
+
+  border-bottom: 1px solid #292929;
+
+  position: sticky;
+  top: 0;
+
+  z-index: 1000;
+}
+
+.navbar h2 {
+  margin: 0;
+
+  color: #e50914;
+
+  font-size: 1.6rem;
+
+  font-weight: 700;
+}
+
+.navbar a {
+  color: white;
+
+  text-decoration: none;
+
+  font-size: 1rem;
+
+  transition: 0.3s ease;
+}
+
+.navbar a:hover {
+  color: #e50914;
+}
+
+
+/* ========================================
    HERO SECTION
 ======================================== */
 
@@ -6,18 +90,21 @@
   min-height: calc(100vh - 85px);
 
   display: flex;
+
   justify-content: center;
+
   align-items: center;
 
   text-align: center;
 
   position: relative;
+
   overflow: hidden;
 
   background:
     radial-gradient(
       circle at center,
-      rgba(229, 9, 20, 0.14),
+      rgba(229, 9, 20, 0.15),
       transparent 45%
     ),
     #171717;
@@ -25,7 +112,7 @@
 
 
 /* ========================================
-   BACKGROUND GLOW
+   HERO BACKGROUND GLOW
 ======================================== */
 
 .hero::before {
@@ -33,14 +120,15 @@
 
   position: absolute;
 
-  width: 450px;
-  height: 450px;
+  width: 500px;
+
+  height: 500px;
 
   border-radius: 50%;
 
   background: rgba(229, 9, 20, 0.08);
 
-  filter: blur(100px);
+  filter: blur(110px);
 
   animation: heroGlow 5s ease-in-out infinite alternate;
 }
@@ -55,6 +143,10 @@
 
   z-index: 2;
 
+  width: 100%;
+
+  max-width: 900px;
+
   padding: 30px;
 
   animation: heroEnter 1.2s ease forwards;
@@ -62,11 +154,12 @@
 
 
 /* ========================================
-   RED LINE
+   HERO RED LINE
 ======================================== */
 
 .hero-line {
   width: 60px;
+
   height: 3px;
 
   background: #e50914;
@@ -80,7 +173,7 @@
 
 
 /* ========================================
-   TITLE
+   HERO TITLE
 ======================================== */
 
 .hero-content h1 {
@@ -91,6 +184,8 @@
   font-size: clamp(3rem, 8vw, 6.5rem);
 
   font-weight: 800;
+
+  line-height: 1.1;
 
   letter-spacing: 3px;
 
@@ -103,15 +198,19 @@
 
 
 /* ========================================
-   DESCRIPTION
+   HERO DESCRIPTION
 ======================================== */
 
 .hero-content p {
+  max-width: 600px;
+
   margin: 25px auto 35px;
 
   color: #bdbdbd;
 
   font-size: 1.1rem;
+
+  line-height: 1.7;
 
   letter-spacing: 1px;
 
@@ -124,7 +223,7 @@
 
 
 /* ========================================
-   EXPLORE BUTTON
+   HERO BUTTON
 ======================================== */
 
 .hero-button {
@@ -150,9 +249,11 @@
 
   animation-delay: 0.8s;
 
-  transition: 0.3s ease;
+  transition:
+    background 0.3s ease,
+    transform 0.3s ease,
+    box-shadow 0.3s ease;
 }
-
 
 .hero-button:hover {
   background: #ff1a25;
@@ -165,11 +266,390 @@
 
 
 /* ========================================
+   MOVIES SECTION
+======================================== */
+
+.movie-form {
+  width: 100%;
+
+  max-width: 1200px;
+
+  margin: 0 auto;
+
+  padding: 70px 30px 60px;
+}
+
+
+/* ========================================
+   SEARCH BOX
+======================================== */
+
+.search-box {
+  width: 100%;
+
+  display: flex;
+
+  gap: 12px;
+
+  margin-bottom: 45px;
+}
+
+.search-box input {
+  flex: 1;
+
+  min-width: 0;
+
+  padding: 14px 18px;
+
+  border: 1px solid #333;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #222;
+
+  color: white;
+
+  font-size: 1rem;
+
+  transition: 0.3s ease;
+}
+
+.search-box input::placeholder {
+  color: #888;
+}
+
+.search-box input:focus {
+  border-color: #e50914;
+
+  box-shadow:
+    0 0 0 2px rgba(229, 9, 20, 0.1);
+}
+
+
+/* ========================================
+   GENERAL BUTTONS
+======================================== */
+
+button {
+  border: none;
+
+  border-radius: 6px;
+
+  padding: 12px 20px;
+
+  background: #e50914;
+
+  color: white;
+
+  font-size: 0.95rem;
+
+  font-weight: 600;
+
+  cursor: pointer;
+
+  transition: 0.3s ease;
+}
+
+button:hover {
+  background: #ff1a25;
+
+  transform: translateY(-2px);
+}
+
+button:disabled {
+  opacity: 0.6;
+
+  cursor: not-allowed;
+
+  transform: none;
+}
+
+
+/* ========================================
+   ADD / EDIT TITLE
+======================================== */
+
+.movie-form h2 {
+  margin: 0 0 20px;
+
+  color: white;
+
+  font-size: 1.8rem;
+}
+
+
+/* ========================================
+   ADD / EDIT INPUTS
+======================================== */
+
+.movie-form > input {
+  width: 100%;
+
+  padding: 14px 16px;
+
+  margin-bottom: 12px;
+
+  border: 1px solid #333;
+
+  border-radius: 6px;
+
+  outline: none;
+
+  background: #222;
+
+  color: white;
+
+  font-size: 1rem;
+
+  transition: 0.3s ease;
+}
+
+.movie-form > input::placeholder {
+  color: #888;
+}
+
+.movie-form > input:focus {
+  border-color: #e50914;
+
+  box-shadow:
+    0 0 0 2px rgba(229, 9, 20, 0.1);
+}
+
+
+/* ========================================
+   ADD MOVIE BUTTON
+======================================== */
+
+.movie-form > button {
+  margin-bottom: 35px;
+}
+
+
+/* ========================================
+   MOVIES CONTAINER
+======================================== */
+
+.movies-container {
+  display: grid;
+
+  grid-template-columns:
+    repeat(4, minmax(0, 1fr));
+
+  gap: 25px;
+
+  margin-top: 30px;
+}
+
+
+/* ========================================
+   MOVIE CARD
+======================================== */
+
+.movie-card {
+  background: #222;
+
+  border: 1px solid #303030;
+
+  border-radius: 10px;
+
+  overflow: hidden;
+
+  cursor: pointer;
+
+  position: relative;
+
+  transition:
+    transform 0.3s ease,
+    border-color 0.3s ease,
+    box-shadow 0.3s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-8px);
+
+  border-color: #e50914;
+
+  box-shadow:
+    0 15px 35px rgba(0, 0, 0, 0.35);
+}
+
+
+/* ========================================
+   MOVIE POSTER
+======================================== */
+
+.movie-card img {
+  width: 100%;
+
+  height: 360px;
+
+  display: block;
+
+  object-fit: cover;
+
+  transition: transform 0.4s ease;
+}
+
+.movie-card:hover img {
+  transform: scale(1.04);
+}
+
+
+/* ========================================
+   NO POSTER
+======================================== */
+
+.no-poster {
+  width: 100%;
+
+  height: 360px;
+
+  display: flex;
+
+  align-items: center;
+
+  justify-content: center;
+
+  background: #2a2a2a;
+
+  color: #888;
+
+  font-size: 1rem;
+}
+
+
+/* ========================================
+   MOVIE TITLE
+======================================== */
+
+.movie-card h3 {
+  margin: 18px 16px 10px;
+
+  color: white;
+
+  font-size: 1.15rem;
+
+  line-height: 1.4;
+}
+
+
+/* ========================================
+   MOVIE INFO
+======================================== */
+
+.movie-card p {
+  margin: 7px 16px;
+
+  color: #aaa;
+
+  font-size: 0.9rem;
+
+  line-height: 1.5;
+}
+
+
+/* ========================================
+   MOVIE OVERVIEW
+======================================== */
+
+.movie-card .overview {
+  color: #888;
+
+  font-size: 0.85rem;
+
+  display: -webkit-box;
+
+  -webkit-line-clamp: 3;
+
+  -webkit-box-orient: vertical;
+
+  overflow: hidden;
+}
+
+
+/* ========================================
+   EDIT / DELETE BUTTONS
+======================================== */
+
+.movie-card button {
+  margin: 15px 5px 20px 16px;
+
+  padding: 9px 14px;
+
+  font-size: 0.85rem;
+}
+
+.movie-card button + button {
+  margin-left: 0;
+}
+
+
+/* ========================================
+   ERROR MESSAGE
+======================================== */
+
+.error-message {
+  width: 100%;
+
+  padding: 15px 18px;
+
+  margin: 20px 0;
+
+  border: 1px solid rgba(229, 9, 20, 0.4);
+
+  border-radius: 6px;
+
+  background: rgba(229, 9, 20, 0.08);
+}
+
+.error-message p {
+  margin: 0;
+
+  color: #ff6b6b;
+
+  font-size: 0.95rem;
+}
+
+
+/* ========================================
+   LOADING
+======================================== */
+
+.loading {
+  margin: 30px 0;
+
+  text-align: center;
+
+  color: #aaa;
+
+  font-size: 1rem;
+
+  animation: loadingPulse 1.2s ease-in-out infinite;
+}
+
+
+/* ========================================
+   NO RESULTS
+======================================== */
+
+.no-results {
+  margin: 40px 0;
+
+  text-align: center;
+
+  color: #888;
+
+  font-size: 1rem;
+}
+
+
+/* ========================================
    ANIMATIONS
 ======================================== */
 
 @keyframes heroEnter {
-
   from {
     opacity: 0;
   }
@@ -177,12 +657,10 @@
   to {
     opacity: 1;
   }
-
 }
 
 
 @keyframes titleAnimation {
-
   from {
     opacity: 0;
 
@@ -202,12 +680,10 @@
 
     letter-spacing: 3px;
   }
-
 }
 
 
 @keyframes paragraphAnimation {
-
   from {
     opacity: 0;
 
@@ -219,12 +695,10 @@
 
     transform: translateY(0);
   }
-
 }
 
 
 @keyframes buttonAnimation {
-
   from {
     opacity: 0;
 
@@ -236,12 +710,10 @@
 
     transform: translateY(0);
   }
-
 }
 
 
 @keyframes lineAnimation {
-
   from {
     width: 0;
 
@@ -253,12 +725,10 @@
 
     opacity: 1;
   }
-
 }
 
 
 @keyframes heroGlow {
-
   from {
     transform: scale(0.8);
 
@@ -270,7 +740,89 @@
 
     opacity: 0.9;
   }
+}
 
+
+@keyframes loadingPulse {
+  0% {
+    opacity: 0.4;
+  }
+
+  50% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0.4;
+  }
+}
+
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 1000px) {
+  .navbar {
+    padding: 0 30px;
+  }
+
+  .movies-container {
+    grid-template-columns:
+      repeat(3, minmax(0, 1fr));
+  }
+
+  .movie-card img,
+  .no-poster {
+    height: 330px;
+  }
+}
+
+
+/* ========================================
+   TABLET / SMALL LAPTOP
+======================================== */
+
+@media (max-width: 768px) {
+  .navbar {
+    height: 75px;
+
+    padding: 0 20px;
+  }
+
+  .hero {
+    min-height: calc(100vh - 75px);
+  }
+
+  .hero-content {
+    padding: 25px;
+  }
+
+  .hero-content h1 {
+    font-size: clamp(2.8rem, 10vw, 4.5rem);
+
+    letter-spacing: 2px;
+  }
+
+  .hero-content p {
+    font-size: 1rem;
+  }
+
+  .movie-form {
+    padding: 55px 20px 50px;
+  }
+
+  .movies-container {
+    grid-template-columns:
+      repeat(2, minmax(0, 1fr));
+
+    gap: 20px;
+  }
+
+  .movie-card img,
+  .no-poster {
+    height: 320px;
+  }
 }
 
 
@@ -279,6 +831,15 @@
 ======================================== */
 
 @media (max-width: 600px) {
+  .navbar {
+    height: 70px;
+
+    padding: 0 15px;
+  }
+
+  .navbar h2 {
+    font-size: 1.3rem;
+  }
 
   .hero {
     min-height: calc(100vh - 70px);
@@ -288,13 +849,21 @@
     padding: 20px;
   }
 
+  .hero-line {
+    margin-bottom: 20px;
+  }
+
   .hero-content h1 {
     font-size: 3rem;
+
+    line-height: 1.15;
 
     letter-spacing: 1px;
   }
 
   .hero-content p {
+    margin: 20px auto 30px;
+
     font-size: 0.95rem;
 
     line-height: 1.6;
@@ -304,4 +873,60 @@
     padding: 12px 26px;
   }
 
+  .movie-form {
+    padding: 45px 15px;
+  }
+
+  .search-box {
+    flex-direction: column;
+
+    gap: 10px;
+  }
+
+  .search-box input {
+    width: 100%;
+  }
+
+  .search-box button {
+    width: 100%;
+  }
+
+  .movie-form h2 {
+    font-size: 1.5rem;
+  }
+
+  .movie-form > button {
+    width: 100%;
+  }
+
+  .movies-container {
+    grid-template-columns: 1fr;
+
+    gap: 25px;
+  }
+
+  .movie-card img,
+  .no-poster {
+    height: 430px;
+  }
+}
+
+
+/* ========================================
+   SMALL MOBILE
+======================================== */
+
+@media (max-width: 400px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+
+  .hero-content p {
+    font-size: 0.9rem;
+  }
+
+  .movie-card img,
+  .no-poster {
+    height: 380px;
+  }
 }
